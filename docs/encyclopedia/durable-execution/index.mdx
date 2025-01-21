@@ -16,12 +16,15 @@ tags:
 import PrettyImage from '@site/src/components/pretty-image/PrettyImage';
 
 How would you change the way you code if your app _couldn't_ fail?
-Durable Execution builds reliable solutions that keep working, even when networks fail or an instance of your app crashes.
-It tracks progress and state, so your work isn't lost and your processes keep running.
-Whether your app faces a service outage or unexpected shutdown, Durable Execution makes sure it picks up where it left off, with no progress lost.
-This reliability lets your app handle disruptions and keep delivering results.
+Durable Execution is crash-proof execution.
+Its abstraction ensures your code keeps running, even when conditions would normally cause it to fail.
 
-## You handle flows; Temporal handles recovery {#focus}
+A Durable Execution system keeps working when networks fail or an instance of your app crashes.
+It tracks progress and state of your workflows, so your work isn't lost and your processes keep running.
+Whether your app faces a service outage or unexpected shutdown, Durable Execution makes sure it picks up where it left off, with no progress lost.
+This reliability lets your app handle disruptions to keep delivering results.
+
+## Business logic focus {#focus}
 
 With Durable Execution, you focus on your workflows and business logic, not on handling errors.
 The following code is real and works:
@@ -31,7 +34,7 @@ The following code is real and works:
 You end up with streamlined code that's more durable:
 
 - **Cleaner code**.
-  Move handling for abnormal conditions like network and hardware errors out of your logic.
+  Move abnormal condition handling out of your logic.
   You won't need it with Durable Execution.
 
 - **Run forever.**
@@ -39,54 +42,18 @@ You end up with streamlined code that's more durable:
   Temporal mitigates it.
 
 - **Runs under every condition.**
-  Durable Execution separates progress tracking from implementation details.
-  When things go wrong, you can wait for them to resolve, move processing to other systems, or even other regions and centers.
+  Durable Execution separates oversight like progress tracking from your running code instances.
+  When things go wrong, you can wait for them to resolve, move processing to other systems or to other regions and centers.
 
 - **Deploy and run at the same time.**
   Durable Execution makes sure that each time your code runs, it follows the original logic and pathway.
   Ship updates and patches without changing outcomes for your existing long-running processes.
 
-How do you get these results? It starts with Temporal's Durable Execution promises.
-
-## Temporal's value proposition {#value}
-
-Durable Execution offers a powerful solution for building reliable and scalable applications.
-It ensures that your workflows continue seamlessly, even when facing failures or disruptions.
-Durable Execution is:
-
-- **Stateful and persistent**:
-  Durable Execution tracks progress and maintains state even when your service restarts or experiences failures.
-  It stores checkpoints in external databases and logs, ensuring your system handles outages or crashes without losing progress.
-
-- **Fault tolerant**:
-  Durable Execution handles failures automatically, keeping tasks running even when parts of your system go down.
-  When a failure occurs, it recovers tasks without interrupting your entire application.
-
-- **Designed to separate concerns**:
-  Durable Execution splits task orchestration from infrastructure management.
-  Focus your app's logic on on business processes and application-level logic, like managing fraud alerts or insufficient funds in a banking app, and not on status recovery.
-  Durable Execution handles state and errors related to platform issues, such as network outages or infrastructure failures so you don't have to.
-
-- **Won't repeat work**:
-  Durable Execution ensures tasks are not repeated unnecessarily.
-  When a task fails, it retries it using policies designed to ensure success without duplicating work.
-  This keeps the process consistent, eliminating redundant work even when errors arise.
-  You won't be sending out seven pizzas when the customer ordered just one.
-
-- **Naturally recoverable**:
-  Even in worst-case scenarios, Durable Execution recovers execution without losing progress.
-  Moving to new hardware or service center deployments won't interrupt your workflows.
-
-- **Inherently observable**:
-  Durable Execution makes the state, health, and progress of your app fully visible.
-  It tracks tasks in real time, so you see progress, failures, and retries as they happen.
-
-These features work together to make sure your process will keep moving forward and complete successfully.
-Temporal's implementation of Durable Execution, whether you're self hosting or using our world class Temporal Cloud service, provide the solution.
+You gain these advantages by adopting the Temporal Service into your applications.
 
 ## Temporal and Durable Execution
 
-When using the Temporal Service, Durable Execution separates your work's state and progress (called your "Event History") of from its code.
+When using Temporal, Durable Execution separates your work's state and progress (called your "Event History") from its code.
 This abstracted oversight (called "orchestration") takes place on a central server.
 It uses a persistent state and progress data store.
 That means if your computing breaks, your workflows won't.
@@ -179,7 +146,41 @@ Temporal uses a technique known as History Replay, which depends on the followin
 
 With Temporal's pre-requisites in place, you're ready to start adopting Durable Execution into your "can't fail" applications.
 
-## Wrap-up {#wrap-up}
+## Temporal and Durable Execution {#value}
+
+Durable Execution offers a powerful solution for building reliable and scalable applications.
+It ensures that your workflows continue seamlessly, even when facing failures or disruptions.
+Durable Execution is:
+
+- **Stateful and persistent**:
+  Durable Execution tracks progress and maintains state even when your service restarts or experiences failures.
+  It stores checkpoints in external databases and logs, ensuring your system handles outages or crashes without losing progress.
+
+- **Fault tolerant**:
+  Durable Execution handles failures automatically, keeping tasks running even when parts of your system go down.
+  When a failure occurs, it recovers tasks without interrupting your entire application.
+
+- **Designed to separate concerns**:
+  Durable Execution splits oversight (task orchestration) from infrastructure management.
+  Focus your app's logic on on business processes and application-level logic, like managing fraud alerts or insufficient funds in a banking app, and not on status recovery.
+  Durable Execution handles state and errors related to platform issues, such as network outages or infrastructure failures so you don't have to.
+
+- **Won't repeat work**:
+  Durable Execution ensures tasks are not repeated unnecessarily.
+  When a task fails, it retries it using policies designed to ensure success without duplicating work.
+  This keeps the process consistent, eliminating redundant work even when errors arise.
+  You won't be sending out seven pizzas when the customer ordered just one.
+
+- **Naturally recoverable**:
+  Even in worst-case scenarios, Durable Execution recovers execution without losing progress.
+  Moving to new hardware or service center deployments won't interrupt your workflows.
+
+- **Inherently observable**:
+  Durable Execution makes the state, health, and progress of your app fully visible.
+  It tracks tasks in real time, so you see progress, failures, and retries as they happen.
+
+These features work together to make sure your process will keep moving forward and complete successfully.
+Temporal's implementation of Durable Execution, whether you're self hosting or using our world class Temporal Cloud service, provide the solution.
 
 Durable Execution helps you build reliable and scalable applications.
 It keeps your workflows running smoothly, even through system failures or disruptions.
@@ -189,4 +190,4 @@ With automatic recovery, Durable Execution guarantees that tasks complete withou
 It simplifies your code, lets you scale easily, and ensures that your app can handle any challenges along the way.
 Durable Execution makes sure your critical processes keep moving forward, no matter what.
 
-Get started with Temporal so your work is reliable, efficient, and scalable.
+Getting started with Temporal helps ensure your work is reliable, efficient, and scalable.
